@@ -16,12 +16,12 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          {{ product_object.price }}
+          R {{ product_object.price | floatformat:2 }}
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          {{ product_object.discounted }}
+          R {{ product_object.discounted | floatformat:2 }}
         </div>
       </div>
       <div class="row">
