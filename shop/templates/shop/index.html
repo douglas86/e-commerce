@@ -22,6 +22,33 @@
     </div>
   </div>
 
+  {% comment %} previous and next button code {% endcomment %}
+  <div style="margin: 10px 25%" class="row">
+    <div class="col-md-3 offset-md-4">
+      <ul class="pagination">
+        {% if product_objects.has_previous %}
+        <li class="page_item">
+          <a
+            style="margin-right: 2px"
+            class="page-link"
+            href="?page={{ product_objects.previous_page_number }}"
+            >Previous</a
+          >
+        </li>
+        {% endif %} {% if product_objects.has_next %}
+
+        <li class="page_item">
+          <a
+            class="page-link"
+            href="?page={{ product_objects.next_page_number }}"
+            >Next</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
   {% comment %} pagination code {% endcomment %}
   <div class="row">
     {% for product in product_objects %}
@@ -41,31 +68,6 @@
       </div>
     </div>
     {% endfor %}
-  </div>
-  {% comment %} previous and next button code {% endcomment %}
-  <div class="row">
-    <div class="col-md-3 offset-md-4">
-      <ul class="pagination">
-        {% if product_objects.has_previous %}
-        <li class="page_item">
-          <a
-            class="page-link"
-            href="?page={{ product_objects.previous_page_number }}"
-            >Previous</a
-          >
-        </li>
-        {% endif %} {% if product_objects.has_next %}
-
-        <li class="page_item">
-          <a
-            class="page-link"
-            href="?page={{ product_objects.next_page_number }}"
-            >Next</a
-          >
-        </li>
-        {% endif %}
-      </ul>
-    </div>
   </div>
 </div>
 {% endblock %}
