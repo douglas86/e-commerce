@@ -1,17 +1,41 @@
 {% extends 'shop/base.html' %} {% block body %}
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <form class="card card-sm">
+        <div class="card-body row no-gytters align-items-center">
+          <div class="col">
+            <input
+              type="search"
+              name="item_name"
+              placeholder="Search for products"
+              class="form-control form-control-borderless"
+            />
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-success" type="submit">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
     {% for product in product_objects %}
     <div class="col-md-3">
-      <div style="width: 280px; height: 380px;" class="card">
-        <img src="{{ product.image }}" class="card-img-top" />
+      <div class="card">
+        <img
+          style="width: 720; height: 720"
+          src="{{ product.image }}"
+          class="card-img-top"
+        />
         <div class="card-body">
           <div class="card-title">
             {{ product.title }}
           </div>
-          <div class="card-text">
-            R {{ product.price|floatformat:2 }}
-          </div>
+          <div class="card-text">R {{ product.price | floatformat:2 }}</div>
         </div>
       </div>
     </div>
