@@ -24,7 +24,8 @@
     <title></title>
   </head>
   <body>
-    {% block body %} {% endblock %}
-
+    {% block body %} {% endblock %} {% block scripts %}
+    <script src="{% static 'index.js' %}"></script>
+    {% endblock %}
   </body>
 </html>
