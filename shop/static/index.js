@@ -31,6 +31,7 @@ function DisplayCart(cart) {
     cartIndex += 1;
   }
 
+  cartString += "<button>checkout</button>";
   document.getElementById("cart").setAttribute("data-content", cartString);
   $('[data-toggle="popover"]').popover();
 }
