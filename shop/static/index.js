@@ -17,3 +17,7 @@ $(document).on("click", ".atc", function () {
   document.getElementById("cart").innerHTML =
     "Cart(" + Object.keys(cart).length + ")";
 });
+
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
