@@ -20,4 +20,5 @@ $(document).on("click", ".atc", function () {
 
 $(function () {
   $('[data-toggle="popover"]').popover();
+	document.getElementById("cart").setAttribute('data-content', '<h5>this is your cart</h5>')
 });
