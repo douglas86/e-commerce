@@ -18,7 +18,24 @@ $(document).on("click", ".atc", function () {
     "Cart(" + Object.keys(cart).length + ")";
 });
 
-$(function () {
+// $(function () {
+//   $('[data-toggle="popover"]').popover();
+//   document
+//     .getElementById("cart")
+//     .setAttribute("data-content", "<h5>this is your cart</h5>");
+// });
+
+DisplayCart(cart);
+
+function DisplayCart(cart) {
+  var cartString = "";
+  cartString += "<h5>this is your cart</h5>";
+  var cartIndex = 1;
+  for (var x in cart) {
+    cartString += cartIndex;
+	  cartString += document.getElementById("nm" + x).innerHTML + "Qty: " + cart[x] + "<br>";
+    cartIndex += 1;
+  }
+  document.getElementById("cart").setAttribute("data-content", cartString);
   $('[data-toggle="popover"]').popover();
-	document.getElementById("cart").setAttribute('data-content', '<h5>this is your cart</h5>')
-});
+}

@@ -56,7 +56,7 @@ code {% endcomment %}
         class="card-img-top"
       />
       <div class="card-body">
-        <div class="card-title">
+        <div id="nm{{ product.id }}" class="card-title">
           {{ product.title }}
         </div>
         <div class="card-text">R {{ product.price | floatformat:2 }}</div>
