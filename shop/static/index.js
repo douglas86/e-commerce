@@ -1,5 +1,3 @@
-console.log("this is working");
-
 if (localStorage.getItem("cart") == null) {
   var cart = {};
 } else {
@@ -7,5 +5,6 @@ if (localStorage.getItem("cart") == null) {
 }
 
 $(document).on("click", ".atc", function () {
-  console.log("The add to button is clicked");
+  var item_id = this.id.toString();
+  console.log(item_id);
 });
