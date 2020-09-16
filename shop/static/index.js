@@ -14,6 +14,8 @@ $(document).on("click", ".atc", function () {
   }
   console.log(cart);
   localStorage.setItem("cart", JSON.stringify(cart));
+  document.getElementById("cart").innerHTML =
+    "Cart(" + Object.keys(cart).length + ")";
 });
 
 $(function () {
@@ -25,5 +27,13 @@ displayCart(cart);
 function displayCart(cart) {
   cartString = "";
   cartString += "<h5>This is the cart</h5>";
-	document.getElementById('cart').setAttribute("data-content", cartString)
+  cartIndex = 1;
+  for (var x in cart) {
+    cartString += cartIndex;
+    cartString +=
+      document.getElementById("nm" + x).innerHTML + "Qty: " + cart[x] + "<br>";
+    cartIndex += 1;
+  }
+  document.getElementById("cart").setAttribute("data-content", cartString);
+  $('[data-toggle="popover"]').popover();
 }
