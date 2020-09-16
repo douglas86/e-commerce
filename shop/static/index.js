@@ -23,8 +23,7 @@ $(function () {
 displayCart(cart);
 
 function displayCart(cart) {
-  console.log("this is the cart" + cart);
   cartString = "";
   cartString += "<h5>This is the cart</h5>";
-  console.log(cartString);
+	document.getElementById('cart').setAttribute("data-content", cartString)
 }
