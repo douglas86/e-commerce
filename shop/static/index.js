@@ -15,6 +15,5 @@ $(document).on("click", ".atc", function () {
   }
   console.log(cart);
   localStorage.setItem("cart", JSON.stringify(cart));
-  document.getElementById("cart").innerHTML =
-    "Cart(" + Object.keys(cart).length + ")";
 });
+
