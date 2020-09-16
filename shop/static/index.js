@@ -6,30 +6,14 @@ if (localStorage.getItem("cart") == null) {
 
 $(document).on("click", ".atc", function () {
   var item_id = this.id.toString();
-  // console.log(item_id);
+  console.log(item_id);
   if (cart[item_id] != undefined) {
     cart[item_id] = cart[item_id] + 1;
   } else {
     cart[item_id] = 1;
   }
-  // console.log(cart);
+  console.log(cart);
   localStorage.setItem("cart", JSON.stringify(cart));
   document.getElementById("cart").innerHTML =
     "Cart(" + Object.keys(cart).length + ")";
 });
-
-DisplayCart(cart);
-
-function DisplayCart(cart) {
-  var cartString = "";
-  cartString += "<h5>This is your cart</h5>";
-  var cartIndex = 1;
-  for (var x in cart) {
-    cartString += cartIndex;
-    cartIndex += 1;
-  }
-
-  cartString += "<button>checkout</button>";
-  document.getElementById("cart").setAttribute("data-content", cartString);
-  $('[data-toggle="popover"]').popover();
-}
