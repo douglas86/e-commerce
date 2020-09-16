@@ -12,6 +12,19 @@ $(document).on("click", ".atc", function () {
   } else {
     cart[item_id] = 1;
   }
-	console.log(cart)
-	localStorage.setItem("cart", JSON.stringify(cart))
+  console.log(cart);
+  localStorage.setItem("cart", JSON.stringify(cart));
 });
+
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
+
+displayCart(cart);
+
+function displayCart(cart) {
+  console.log("this is the cart" + cart);
+  cartString = "";
+  cartString += "<h5>This is the cart</h5>";
+  console.log(cartString);
+}
