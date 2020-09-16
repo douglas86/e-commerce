@@ -4,6 +4,7 @@ if (localStorage.getItem("cart") == null) {
   cart = JSON.parse(localStorage.getItem("cart"));
 }
 
+console.log("hello")
 $(document).on("click", ".atc", function () {
   var item_id = this.id.toString();
   console.log(item_id);
