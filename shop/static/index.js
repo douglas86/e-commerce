@@ -31,9 +31,11 @@ function displayCart(cart) {
   for (var x in cart) {
     cartString += cartIndex;
     cartString +=
-      document.getElementById("nm" + x).innerHTML + "Qty: " + cart[x] + "<br>";
+		  document.getElementById("nm" + x).innerHTML + "Qty: " + cart[x] + "<br>";
     cartIndex += 1;
   }
+  cartString +=
+    "<a href='/checkout'>Checkout</a>";
   document.getElementById("cart").setAttribute("data-content", cartString);
   $('[data-toggle="popover"]').popover();
 }
