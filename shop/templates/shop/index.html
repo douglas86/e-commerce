@@ -1,4 +1,7 @@
-{% extends 'shop/base.html' %} {% block body %} {% comment %} search feature
+{% extends 'shop/base.html' %} 
+{% load static %}
+{% block body %} 
+{% comment %} search feature
 code {% endcomment %}
 <div class="row">
   <div class="col-md-12">
@@ -67,4 +70,12 @@ code {% endcomment %}
   </div>
   {% endfor %}
 </div>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src={% static 'index.js' %}></script>
+	<script>
+		window.onload = function home(){
+			homepage()
+		}
+	</script>
 {% endblock %}
