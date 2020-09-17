@@ -10,9 +10,12 @@ if (localStorage.getItem("cart") == null) {
 $(document).on("click", ".atc", function () {
   var item_id = this.id.toString();
   if (cart[item_id] != undefined) {
-    cart[item_id] = cart[item_id] + 1;
+    quantity = cart[item_id][0] + 1;
+    cart[item_id][0] = quantity;
   } else {
-    cart[item_id] = 1;
+    quantity = 1;
+    name = document.getElementById("nm" + item_id).innerHTML;
+    cart[item_id] = [quantity, name];
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   document.getElementById("cart").innerHTML =
@@ -31,12 +34,13 @@ function displayCart(cart) {
   for (var x in cart) {
     cartString += cartIndex;
     cartString +=
-      document.getElementById("nm" + x).innerHTML + "Qty: " + cart[x] + "<br>";
+      document.getElementById("nm" + x).innerHTML + "Qty: " + cart[0] + "<br>";
     cartIndex += 1;
   }
   cartString += "<a href='/checkout'>Checkout</a>";
   document.getElementById("cart").setAttribute("data-content", cartString);
   $('[data-toggle="popover"]').popover();
+  console.log(cart);
 }
 
 // load function when doc starts
