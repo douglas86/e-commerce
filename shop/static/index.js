@@ -53,3 +53,7 @@ function loadFun(cart) {
 
 // start loading on windows start
 $(window).on("load", loadFun(cart));
+
+function check(){
+	alert("page")
+}
