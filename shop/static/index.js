@@ -60,5 +60,11 @@ function loadFun(cart) {
 $(window).on("load", loadFun(cart));
 
 function check() {
-  alert("this");
+  for (var item in cart) {
+    let name = cart[item][1];
+    let quantity = cart[item][0];
+
+    itemString = `<li class='list-group-item'>${name}-${quantity}</li>`;
+    $("#item_list").append(itemString);
+  }
 }
