@@ -1,7 +1,7 @@
 // get localStorage item cart
 // if doesn't exist create it
 if (localStorage.getItem("cart") == null) {
-  var cart = {};
+  let cart = {};
 } else {
   cart = JSON.parse(localStorage.getItem("cart"));
 }
@@ -9,7 +9,7 @@ if (localStorage.getItem("cart") == null) {
 function homepage() {
   // once item is clicked
   $(document).on("click", ".atc", function () {
-    var item_id = this.id.toString();
+    let item_id = this.id.toString();
     if (cart[item_id] != undefined) {
       quantity = cart[item_id][0] + 1;
       cart[item_id][0] = quantity;
@@ -32,7 +32,7 @@ function homepage() {
     cartString = "";
     cartString += "<h5>This is the cart</h5>";
     cartIndex = 1;
-    for (var x in cart) {
+    for (let x in cart) {
       cartString += cartIndex;
       cartString +=
         document.getElementById("nm" + x).innerHTML +
@@ -50,7 +50,7 @@ function homepage() {
 
 // load function when doc starts
 function loadFun(cart) {
-  for (var x in cart) {
+  for (let x in cart) {
     document.getElementById("cart").innerHTML =
       "Cart(" + Object.keys(cart).length + ")";
   }
@@ -60,7 +60,7 @@ function loadFun(cart) {
 $(window).on("load", loadFun(cart));
 
 function check() {
-  for (var item in cart) {
+  for (let item in cart) {
     let name = cart[item][1];
     let quantity = cart[item][0];
 
