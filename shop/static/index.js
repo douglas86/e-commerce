@@ -55,5 +55,5 @@ function loadFun(cart) {
 $(window).on("load", loadFun(cart));
 
 function check(){
-	alert("page")
+	alert("this")
 }

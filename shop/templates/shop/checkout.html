@@ -1,5 +1,7 @@
-{% extends 'shop/base.html' %} {% block body %}
-<div class="col-md-12" onload="checkout()">
+{% extends 'shop/base.html' %} 
+{% load static %}
+{% block body %}
+<div class="col-md-12">
   <div class="row">
     <ul class="list-group">
       <li
@@ -24,5 +26,11 @@
   </div>
 </div>
 {% endblock %}
+{% block scripts %}
 <script type="text/javascript" src={% static 'index.js' %}></script>
-<script>check()</script>
+   <script>
+	   window.onload = function c(){
+		   check()
+	   }
+   </script>
+{% endblock %}
