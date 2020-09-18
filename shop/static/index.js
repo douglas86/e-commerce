@@ -67,4 +67,5 @@ function check() {
     itemString = `<li class='list-group-item'>${name}-${quantity}</li>`;
     $("#item_list").append(itemString);
   }
+  $("#items").val(JSON.stringify(cart));
 }
