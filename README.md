@@ -9,6 +9,6 @@ As soon as I click on the pagination button to ge to next page it
 gives the following errors.
 Uncaught TypeError: Cannot read property 'innerHTML' of null
 then I have to delete the localStorage and the problem will go away
-until I click either next of previous.
+until I click either next or previous.
 So I recon that problem counld have something to do with not passing the button tag
 to the next page.
