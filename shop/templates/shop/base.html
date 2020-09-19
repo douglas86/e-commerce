@@ -67,6 +67,9 @@
         </ul>
       </div>
     </nav>
+	{% for prod in products %}
+	{{ prod }}
+	{% endfor %}
     {% block body %} {% endblock %}
   </body>
 </html>
