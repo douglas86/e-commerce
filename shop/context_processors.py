@@ -1,4 +1,5 @@
-from .models import Product
+from .models import Storage
+
 def sections_processor(request):
-    products = Product.objects.all()
-    return {"products":products}
+    storage_items = Storage.objects.all()
+    return {"storage_items":storage_items}

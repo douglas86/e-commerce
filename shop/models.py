@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields.json import JSONField
 
 # Create your models here.
 class Product(models.Model):
@@ -13,4 +14,8 @@ class Product(models.Model):
         return self.title
 
 class Storage(models.Model):
-    pass
+    name = models.CharField(max_length=200)
+    quantity = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name

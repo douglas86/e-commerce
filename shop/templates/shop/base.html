@@ -67,8 +67,8 @@
         </ul>
       </div>
     </nav>
-	{% for prod in products %}
-	{{ prod.id }}
+	{% for store in storage_items %}
+	{{ store.name }}
 	{% endfor %}
     {% block body %} {% endblock %}
   </body>
