@@ -1,0 +1,7 @@
+{% extends 'shop/base.html' %} {% block body %}
+<form method="POST" accept-charset="utf-8">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

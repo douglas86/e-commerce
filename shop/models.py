@@ -14,8 +14,8 @@ class Product(models.Model):
         return self.title
 
 class Storage(models.Model):
-    name = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     quantity = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return self.title

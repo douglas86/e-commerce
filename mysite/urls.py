@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from shop import views
+from shop.forms import StorageForm
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index, name="index"),
     path("<int:id>/", views.detail, name="detail"),
+    path("add/<int:id>/", views.create_items, name="create_items"),
 ]
