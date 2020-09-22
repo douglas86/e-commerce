@@ -21,7 +21,11 @@ def index(request):
     return render(
         request,
         "shop/index.html",
-        {"product_objects": product_objects, "storage_objects":storage_objects,},
+        {
+            "product_objects": product_objects,
+            "storage_objects": storage_objects,
+            "pro":pro,
+        },
     )
 
 
@@ -29,11 +33,17 @@ def detail(request, id):
     product_object = Product.objects.get(id=id)
     return render(request, "shop/detail.html", {"product_object": product_object})
 
-def create_items(request, id ):
+
+def create_items(request, id):
     form = StorageForm(request.POST or None)
+    product_objects = Product.objects.get(id=id)
 
     if form.is_valid():
         form.save()
         return redirect("shop:index")
 
-    return render(request, "shop/item-form.html", {"form":form})
+    return render(
+        request,
+        "shop/item-form.html",
+        {"form": form, "product_objects": product_objects},
+    )
