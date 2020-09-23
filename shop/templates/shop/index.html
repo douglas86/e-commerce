@@ -64,8 +64,10 @@
             {{ product.title }}
           </div>
           <div class="card-text">R {{ product.price | floatformat:2 }}</div>
-		  <a href="{{ product.id }}" class="btn btn-warning">View</a>
-		  <a class="btn btn-warning">add to cart</a>
+          <a href="{{ product.id }}" class="btn btn-warning">View</a>
+          <a href="add/{{ product.id }}">
+            <button type="submit" class="btn btn-warning">add to cart</button>
+          </a>
         </div>
       </div>
     </div>
