@@ -30,11 +30,13 @@ def detail(request, id):
 
 
 def create_items(request, id):
-    storage = Product.objects.get(id=id)
-    posted = storage(request.POST or None)
+    product_objects = Product.objects.get(id=id)
+    storage_objects = Storage.objects.create(
+        title="%s" % product_objects.title,
+        price="%s" % product_objects.price,
+        quantity="1",
+    )
 
-    if posted.is_valid():
-        posted.save()
+    storage_objects
 
-
-    return render(request, "shop/item-forms.html", {"storage":storage})
+    return redirect("/")
