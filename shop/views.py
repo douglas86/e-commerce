@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Product, Storage
+from .models import Product
 from django.core.paginator import Paginator
-from .forms import StorageForm
 
 # Create your views here.
 def index(request):
@@ -31,12 +30,8 @@ def detail(request, id):
 
 def create_items(request, id):
     product_objects = Product.objects.get(id=id)
-    storage_objects = Storage.objects.create(
-        title="%s" % product_objects.title,
-        price="%s" % product_objects.price,
-        quantity="1",
-    )
+    
+    product_objects.quantity += 1
+    product_objects.save()
 
-    storage_objects
-
-    return redirect("/")
+    return redirect("/") 
