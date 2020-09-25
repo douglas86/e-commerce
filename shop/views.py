@@ -29,14 +29,19 @@ def detail(request, id):
     return render(request, "shop/detail.html", {"product_object": product_object})
 
 
+#  add to cart view
 def create_items(request, id):
+    #  looks to see what page you are on
     req = request.GET.get("page")
 
+    #  grabs item from db by id number
     product_objects = Product.objects.get(id=id)
 
+    #  adds one to quantity then saves to db
     product_objects.quantity += 1
     product_objects.save()
 
+    #  makes sure to stay on current page
     if req != None:
         return redirect("/")
     else:
