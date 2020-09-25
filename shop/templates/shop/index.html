@@ -48,34 +48,29 @@ code {% endcomment %}
   </div>
 </div>
 
-{% comment %} pagination code {% endcomment %}
-<div class="row">
-  {% for product in product_objects %}
-  <div class="col-md-3">
-    <div class="card">
-      <img
-        style="width: 720; height: 720"
-        src="{{ product.image }}"
-        class="card-img-top"
-      />
-      <div class="card-body">
-        <div id="nm{{ product.id }}" class="card-title">{{ product.title }}</div>
-        <div class="card-text">R {{ product.price | floatformat:2 }}</div>
-        <a href="{{ product.id }}" class="btn btn-warning">View</a>
-        <button id="{{ product.id }}" class="btn atc btn-warning">
-          add to cart
-        </button>
+  {% comment %} pagination code {% endcomment %}
+  <div class="row">
+    {% for product in product_objects %}
+    <div class="col-md-3">
+      <div class="card">
+        <img
+          style="width: 720; height: 720"
+          src="{{ product.image }}"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <div class="card-title">
+            {{ product.title }}
+          </div>
+          <div class="card-text">R {{ product.price | floatformat:2 }}</div>
+          <a href="{{ product.id }}" class="btn btn-warning">View</a>
+          <a href="add/{{ product.id }}">
+            <button type="submit" class="btn btn-warning">add to cart</button>
+          </a>
+        </div>
       </div>
     </div>
   </div>
   {% endfor %}
 </div>
-{% endblock %}
-{% block scripts %}
-<script type="text/javascript" src={% static 'index.js' %}></script>
-	<script>
-		window.onload = function home(){
-			homepage()
-		}
-	</script>
 {% endblock %}
