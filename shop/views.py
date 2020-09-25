@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Product
 from django.core.paginator import Paginator
+from shop.context_processors import requesting
 
 # Create your views here.
 def index(request):
@@ -29,9 +30,14 @@ def detail(request, id):
 
 
 def create_items(request, id):
+    req = request.GET.get("page")
+
     product_objects = Product.objects.get(id=id)
-    
+
     product_objects.quantity += 1
     product_objects.save()
 
-    return redirect("/") 
+    if req != None:
+        return redirect("/")
+    else:
+        return redirect("/?page={}".format(requesting()))
