@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Product
 from django.core.paginator import Paginator
-from shop.context_processors import requesting
+from shop.context_processors import requesting, sect
 
 # Create your views here.
 def index(request):
@@ -47,6 +47,15 @@ def create_items(request, id):
     else:
         return redirect("/?page={}".format(requesting()))
 
+
 def checkout(request):
     product_objects = Product.objects.all()
-    return render(request, "shop/checkout.html", {"product_objects":product_objects})
+    alls = sect(request)
+    return render(
+        request,
+        "shop/checkout.html",
+        {
+            "product_objects": product_objects,
+            "alls":alls,
+        },
+    )

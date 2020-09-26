@@ -3,9 +3,38 @@ from .models import Product
 #  create a list that append what query you are on
 #  from the url path
 req = []
+amounts = []
+titles = []
 
 #  def popoverMenu():
 #      pro = Product.objects.values('id','title','quantity')
+
+def sect(request):
+    req.clear()
+    req.append(request.GET.get("page"))
+    amounts.clear()
+    titles.clear()
+
+    pro = Product.objects.values("id", "quantity", "title")
+    length = len(pro)
+    alls = {}
+
+    for i in range(length):
+        p = pro[i].values()
+        l = list(p)[1]
+        t = list(p)[2]
+        if l > 0:
+            amounts.append(l)
+            titles.append(t)
+
+    for i in range(len(amounts)):
+        alls[titles[i]] = amounts[i]
+
+    #  le = len(lists)
+
+    zippedList = (titles, amounts)
+
+    return alls
     
 
 def sections_processor(request):
