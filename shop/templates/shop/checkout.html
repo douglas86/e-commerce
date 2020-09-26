@@ -1,22 +1,28 @@
 {% extends 'shop/base.html' %} {% block body %}
-<div style="margin: 10px 25%" class="list-group">
-  <ul class="list-group">
-    <li class="list-group-item list-group-item-action active">Cart Items</li>
-    {% for k,v in alls.items %}
-    <li class="list-group-item align-items-center">
-      <button type="submit" class="btn btn-success">+</button>
-      <button style="margin-right: 3%" type="submit" class="btn btn-danger">
-        -
-      </button>
-      {{ k }}
-      <span
-        style="margin-left: 25%; font-size:20px"
-        class="badge badge-primary badge-pill float-right"
-      >
-        {{ v }}
-      </span>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
+{% comment %} <div style="margin: 10px 25%" class="list-group"> {% endcomment %}
+{% comment %}   <ul class="list-group"> {% endcomment %}
+{% comment %}     <ul class=" list-group list-group-horizontal"> {% endcomment %}
+{% comment %}       <li class="list-group-item list-group-item-action active">Cart Items</li> {% endcomment %}
+{% comment %}       <li style="margin-left: 3%" class="list-group-item list-group-item-action active float-right">Cart Items</li> {% endcomment %}
+{% comment %}     </ul> {% endcomment %}
+{% comment %}     {% for k,v in alls.items %} {% endcomment %}
+{% comment %}     <li class="list-group-item align-items-center"> {% endcomment %}
+{% comment %}       <button type="submit" class="btn btn-success">+</button> {% endcomment %}
+{% comment %}       <button style="margin-right: 3%" type="submit" class="btn btn-danger"> {% endcomment %}
+{% comment %}         - {% endcomment %}
+{% comment %}       </button> {% endcomment %}
+{% comment %}       {{ k }} {% endcomment %}
+{% comment %}       <span {% endcomment %}
+{% comment %}         style="margin-left: 25%; font-size: 20px" {% endcomment %}
+{% comment %}         class="badge badge-primary badge-pill float-right" {% endcomment %}
+{% comment %}       > {% endcomment %}
+{% comment %}         {{ v.0 }} {% endcomment %}
+{% comment %}       </span> {% endcomment %}
+{% comment %}     </li> {% endcomment %}
+{% comment %}     {% endfor %} {% endcomment %}
+{% comment %}   </ul> {% endcomment %}
+{% comment %} </div> {% endcomment %}
+
+{{ pro }}
+
 {% endblock %}

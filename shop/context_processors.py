@@ -2,39 +2,52 @@ from .models import Product
 
 #  create a list that append what query you are on
 #  from the url path
-req = []
+req = [] # this is to get the reference number of the page that you are on
 amounts = []
 titles = []
+
+items = {}
+attributes = Product.objects.values("id", "title", "price", "quantity")
+length = len(attributes)
 
 #  def popoverMenu():
 #      pro = Product.objects.values('id','title','quantity')
 
 def sect(request):
-    req.clear()
-    req.append(request.GET.get("page"))
-    amounts.clear()
-    titles.clear()
+    #  req.clear()
+    #  req.append(request.GET.get("page"))
+    #  amounts.clear()
+    #  titles.clear()
 
-    pro = Product.objects.values("id", "quantity", "title")
-    length = len(pro)
-    alls = {}
+    #  attributes = Product.objects.values("id", "title", "price", "quantity")
+    #  length = len(attributes)
+    #  alls = {}
 
-    for i in range(length):
-        p = pro[i].values()
-        l = list(p)[1]
-        t = list(p)[2]
-        if l > 0:
-            amounts.append(l)
-            titles.append(t)
-
-    for i in range(len(amounts)):
-        alls[titles[i]] = amounts[i]
+    #  for i in range(length):
+    #      p = pro[i].values()
+    #      l = list(p)[1]
+    #      t = list(p)[2]
+    #      if l > 0:
+    #          amounts.append(l)
+    #          titles.append(t)
+    #
+    #  for i in range(len(amounts)):
+    #      alls[titles[i]] = amounts[i], "25"
 
     #  le = len(lists)
 
-    zippedList = (titles, amounts)
+    #  zippedList = (titles, amounts)
 
-    return alls
+    for i in range(length):
+        val = list(attributes[i].values())
+        ids = val[0]
+        title = val[1]
+        price = val[2]
+        quant = val[3]
+        if quant > 0:
+            item[title] = ids, price, quant
+
+    return pro
     
 
 def sections_processor(request):
