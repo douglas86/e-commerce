@@ -46,3 +46,7 @@ def create_items(request, id):
         return redirect("/")
     else:
         return redirect("/?page={}".format(requesting()))
+
+def checkout(request):
+    product_objects = Product.objects.all()
+    return render(request, "shop/checkout.html", {"product_objects":product_objects})
