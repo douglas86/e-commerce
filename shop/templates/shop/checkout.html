@@ -23,6 +23,12 @@
 {% comment %}   </ul> {% endcomment %}
 {% comment %} </div> {% endcomment %}
 
-{{ pro }}
+{% comment %} {% for k,v in item.items %} {% endcomment %}
+{% comment %} {{ v.0 }} {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
+
+{% for v in item.values %}
+{{ v.0 }}
+{% endfor %}
 
 {% endblock %}
