@@ -50,12 +50,14 @@ def create_items(request, id):
 
 def checkout(request):
     product_objects = Product.objects.all()
-    item = sect(request)
+    item, adding_prices, adding_quantities = sect(request)
     return render(
         request,
         "shop/checkout.html",
         {
             "product_objects": product_objects,
             "item":item,
+            "adding_prices":adding_prices,
+            "adding_quantities":adding_quantities,
         },
     )

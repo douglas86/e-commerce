@@ -28,11 +28,19 @@ def sect(request):
         if quant > 0:
             item["stock{}".format(i+1)] = ids, title, price, quant
 
+    Sum = []
+    quantity = []
 
-    #  for i in range(l):
-    #      everything.append(list(item.values())[i])
+    for i in range(len(item.keys())):
+        adding_prices = list(attributes[i].values())[2]
+        adding_quantities = list(attributes[i].values())[3]
+        Sum.append(adding_prices)
+        quantity.append(adding_quantities)
 
-    return item
+
+
+
+    return item, sum(Sum), sum(quantity)
     
 
 def sections_processor(request):
