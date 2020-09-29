@@ -82,5 +82,4 @@ def checkout(request):
             "adding_prices": adding_prices,
             "adding_quantities": adding_quantities,
         },
-
     )

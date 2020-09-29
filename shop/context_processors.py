@@ -32,8 +32,8 @@ def sect(request):
     quantity = []
 
     for i in range(len(item.keys())):
-        adding_prices = list(attributes[i].values())[2]
-        adding_quantities = list(attributes[i].values())[3]
+        adding_prices = list(item.values())[i][2]
+        adding_quantities = list(item.values())[i][3]
         Sum.append(adding_prices)
         quantity.append(adding_quantities)
 
