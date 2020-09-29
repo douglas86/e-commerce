@@ -45,15 +45,12 @@ def create_items(request, id):
 
     #  makes sure to stay on current page
     if req != None:
-        return redirect("/{}".format(your_domain))
+        return redirect("/")
     else:
         return redirect("/?page={}".format(requesting()))
 
 
 def subtract(request, id):
-    #  looks to see what page you are on
-    req = request.GET.get("page")
-
     #  grabs item from db by id number
     product_objects = Product.objects.get(id=id)
 
