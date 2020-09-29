@@ -2,7 +2,7 @@ from .models import Product
 
 #  create a list that append what query you are on
 #  from the url path
-req = [] # this is to get the reference number of the page that you are on
+req = []  # this is to get the reference number of the page that you are on
 amounts = []
 titles = []
 
@@ -26,7 +26,7 @@ def sect(request):
         price = val[2]
         quant = val[3]
         if quant > 0:
-            item["stock{}".format(i+1)] = ids, title, price, quant
+            item["stock{}".format(i + 1)] = ids, title, price, quant
 
     Sum = []
     quantity = []
@@ -37,17 +37,14 @@ def sect(request):
         Sum.append(adding_prices)
         quantity.append(adding_quantities)
 
-
-
-
     return item, sum(Sum), sum(quantity)
-    
+
 
 def sections_processor(request):
 
     #  append the number at the end of the page
     #  /?page=1 number to append
-    req.clear() # clears list before appending
+    req.clear()  # clears list before appending
     req.append(request.GET.get("page"))
 
     #  takes the values id and quantity out of the db
@@ -72,8 +69,8 @@ def sections_processor(request):
 
     zippedList = zip(lists, titles)
 
+    return {"le": le, "zippedList": zippedList}
 
-    return {"le": le, "zippedList":zippedList}
 
 def requesting():
     return req.pop()

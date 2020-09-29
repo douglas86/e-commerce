@@ -41,11 +41,33 @@ def create_items(request, id):
     product_objects.quantity += 1
     product_objects.save()
 
+    requestig = request.get_full_path()
+
     #  makes sure to stay on current page
     if req != None:
-        return redirect("/")
+        return redirect("/{}".format(your_domain))
     else:
         return redirect("/?page={}".format(requesting()))
+
+
+def subtract(request, id):
+    #  looks to see what page you are on
+    req = request.GET.get("page")
+
+    #  grabs item from db by id number
+    product_objects = Product.objects.get(id=id)
+
+    #  adds one to quantity then saves to db
+    product_objects.quantity -= 1
+    product_objects.save()
+
+    return redirect("/checkout")
+
+    #  makes sure to stay on current page
+    #  if req != None:
+    #      return redirect("/")
+    #  else:
+    #      return redirect("/?page={}".format(requesting()))
 
 
 def checkout(request):
@@ -56,8 +78,9 @@ def checkout(request):
         "shop/checkout.html",
         {
             "product_objects": product_objects,
-            "item":item,
-            "adding_prices":adding_prices,
-            "adding_quantities":adding_quantities,
+            "item": item,
+            "adding_prices": adding_prices,
+            "adding_quantities": adding_quantities,
         },
+
     )
