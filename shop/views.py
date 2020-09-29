@@ -72,7 +72,7 @@ def subtract(request, id):
 
 def checkout(request):
     product_objects = Product.objects.all()
-    item, adding_prices, adding_quantities = sect(request)
+    item, adding_prices, adding_quantities, total_price = sect(request)
     return render(
         request,
         "shop/checkout.html",
@@ -81,5 +81,7 @@ def checkout(request):
             "item": item,
             "adding_prices": adding_prices,
             "adding_quantities": adding_quantities,
+            "total_column":total_price,
+            "total_price":sum(total_price),
         },
     )

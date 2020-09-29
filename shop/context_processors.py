@@ -30,14 +30,17 @@ def sect(request):
 
     Sum = []
     quantity = []
+    total_price = []
 
     for i in range(len(item.keys())):
         adding_prices = list(item.values())[i][2]
         adding_quantities = list(item.values())[i][3]
         Sum.append(adding_prices)
         quantity.append(adding_quantities)
+        adding_prices = Sum[i] * quantity[i]
+        total_price.append(adding_prices)
 
-    return item, sum(Sum), sum(quantity)
+    return item, sum(Sum), sum(quantity), total_price
 
 
 def sections_processor(request):
