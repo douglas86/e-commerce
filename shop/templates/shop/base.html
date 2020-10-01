@@ -29,8 +29,11 @@
     <title></title>
   </head>
   <body>
-    <nav style="margin-bottom:10px;" class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <nav
+      style="margin-bottom: 10px"
+      class="navbar navbar-expand-lg navbar-light bg-light"
+    >
+      <a class="navbar-brand" href="/">Home</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -45,46 +48,11 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-container="body"
-            data-toggle="popover"
-            data-placement="bottom"
-            data-content="
-						  {% for list1,list2 in zippedList %}
-						  {{ list2 }} Qty: {{ list1 }} 
-						  {% endfor %}"
-          >
-            Cart ({{ le }})
-          </button>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
+            <a class="nav-link" href="/checkout"> Cart ({{ le }}) </a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="container">{% block body %} {% endblock %}</div>
-    <script>
-      $(function () {
-        $('[data-toggle="popover"]').popover();
-      });
-    </script>
   </body>
 </html>
