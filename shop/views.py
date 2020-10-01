@@ -3,6 +3,7 @@ from .models import Product
 from django.core.paginator import Paginator
 from shop.context_processors import requesting, sect
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 
 class Index(ListView):
@@ -20,9 +21,9 @@ class Index(ListView):
         return Product.objects.all()
 
 
-def detail(request, id):
-    product_object = Product.objects.get(id=id)
-    return render(request, "shop/detail.html", {"product_object": product_object})
+class Detail(DetailView):
+    model = Product
+    template_name = "shop/detail.html"
 
 
 #  add to cart view
