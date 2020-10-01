@@ -9,7 +9,7 @@ from django.views.generic.detail import DetailView
 class Index(ListView):
     model = Product
     template_name = "shop/index.html"
-    paginate_by = 4
+    paginate_by = 4  # sets the amount of items to display on page
 
     #  search code
     def get_queryset(self):
