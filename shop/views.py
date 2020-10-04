@@ -4,6 +4,8 @@ from django.core.paginator import Paginator
 from shop.context_processors import requesting, sect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
+from django.db.models import F
 
 
 class Index(ListView):
@@ -27,24 +29,37 @@ class Detail(DetailView):
 
 
 #  add to cart view
-def create_items(request, id):
-    #  looks to see what page you are on
-    req = request.GET.get("page")
+#  def create_items(request, id):
+#      #  looks to see what page you are on
+#      req = request.GET.get("page")
+#
+#      #  grabs item from db by id number
+#      product_objects = Product.objects.get(id=id)
+#
+#      #  adds one to quantity then saves to db
+#      product_objects.quantity += 1
+#      product_objects.save()
+#
+#      requestig = request.get_full_path()
+#
+#      #  makes sure to stay on current page
+#      if req != None:
+#          return redirect("/")
+#      else:
+#          return redirect("/?page={}".format(requesting()))
 
-    #  grabs item from db by id number
-    product_objects = Product.objects.get(id=id)
 
-    #  adds one to quantity then saves to db
-    product_objects.quantity += 1
-    product_objects.save()
+class Update(DetailView):
+    model = Product
+    template_name = "shop/update.html"
+    
+    def get_context_data(self, **kw):
+        context = super(DetailView, self).get_context_data(**kw)
+        self.object.quantity = F('quantity') + 1
+        self.object.save()
+        self.object.refresh_from_db()
+        return context, self.kw
 
-    requestig = request.get_full_path()
-
-    #  makes sure to stay on current page
-    if req != None:
-        return redirect("/")
-    else:
-        return redirect("/?page={}".format(requesting()))
 
 
 def subtract(request, id):

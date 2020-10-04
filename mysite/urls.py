@@ -21,7 +21,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.Index.as_view(), name="index"),
     path("<pk>/", views.Detail.as_view(), name="detail"),
-    path("add/<int:id>/", views.create_items, name="create"),
-    path("subtract/<int:id>/", views.subtract, name="subtract"),
+    path("<pk>/update/add/", views.Update.as_view(), name="update"),
+    #  path("add/<int:id>/", views.create_items, name="create"),
+    #  path("subtract/<int:id>/", views.subtract, name="subtract"),
     path("checkout/", views.checkout, name='checkout'),
 ]

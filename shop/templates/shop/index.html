@@ -47,6 +47,31 @@
 </div>
 
 {% comment %} pagination code {% endcomment %}
+{% comment %} <div class="row"> {% endcomment %}
+{% comment %} {% for product in object_list %} {% endcomment %}
+{% comment %}     <div class="col-md-3"> {% endcomment %}
+{% comment %}       <div class="card"> {% endcomment %}
+{% comment %}         <img {% endcomment %}
+{% comment %}           style="width: 720; height: 720" {% endcomment %}
+{% comment %}           src="{{ product.image }}" {% endcomment %}
+{% comment %}           class="card-img-top" {% endcomment %}
+{% comment %}         /> {% endcomment %}
+{% comment %}         <div class="card-body"> {% endcomment %}
+{% comment %}           <div class="card-title"> {% endcomment %}
+{% comment %}             {{ product.title }} {% endcomment %}
+{% comment %}           </div> {% endcomment %}
+{% comment %}           <div class="card-text">R {{ product.price | floatformat:2 }}</div> {% endcomment %}
+{% comment %}           <a href="{{ product.id }}" class="btn btn-warning">View</a> {% endcomment %}
+{% comment %}           <a href="add/{{ product.id }}"> {% endcomment %}
+{% comment %}             <button type="submit" class="btn btn-warning">add to cart</button> {% endcomment %}
+{% comment %}           </a> {% endcomment %}
+{% comment %}         </div> {% endcomment %}
+{% comment %}       </div> {% endcomment %}
+{% comment %}     </div> {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
+{% comment %} </div> {% endcomment %}
+
+{% comment %} pagination code {% endcomment %}
 <div class="row">
 {% for product in object_list %}
 	<div class="col-md-3">
@@ -62,7 +87,7 @@
 		  </div>
 		  <div class="card-text">R {{ product.price | floatformat:2 }}</div>
 		  <a href="{{ product.id }}" class="btn btn-warning">View</a>
-		  <a href="add/{{ product.id }}">
+		  <a href="{{ product.pk }}/update/add">
 			<button type="submit" class="btn btn-warning">add to cart</button>
 		  </a>
 		</div>
