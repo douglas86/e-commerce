@@ -49,19 +49,31 @@ class Detail(DetailView):
 #          return redirect("/?page={}".format(requesting()))
 
 
-class Update(DetailView):
+#  class Update(DetailView):
+#      model = Product
+#      template_name = "shop/update.html"
+#
+#      def get_context_data(self, a):
+#          #  context = super(DetailView, self).get_context_data(**kw)
+#          return a
+#      #  def get_context_data(self, **kw):
+#      #      context = super(DetailView, self).get_context_data(**kw)
+#      #      self.object.quantity = F('quantity') + 1
+#      #      self.object.save()
+#      #      self.object.refresh_from_db()
+#      #      return context, self.kw
+
+class Update(UpdateView):
     model = Product
     template_name = "shop/update.html"
-    
-    def get_context_data(self, a):
-        #  context = super(DetailView, self).get_context_data(**kw)
-        return a
-    #  def get_context_data(self, **kw):
-    #      context = super(DetailView, self).get_context_data(**kw)
-    #      self.object.quantity = F('quantity') + 1
-    #      self.object.save()
-    #      self.object.refresh_from_db()
-    #      return context, self.kw
+    fields = ['title', 'quantity']
+
+    def get_context_data(self, **kw):
+        context = super().get_context_data(**kw)
+        path = self.request.path
+        name = self.kw['name']
+        return name
+
 
 
 

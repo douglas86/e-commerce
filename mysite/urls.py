@@ -20,8 +20,8 @@ from shop import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.Index.as_view(), name="index"),
+    path("/update/<pk>/<str:name>", views.Update.as_view(), name="update"),
     path("<pk>/", views.Detail.as_view(), name="detail"),
-    path("<pk>/<str:a>/", views.Update.as_view(), name="update"),
     #  path("<pk>/update/add/", views.Update.as_view(), name="update"),
     #  path("add/<int:id>/", views.create_items, name="create"),
     #  path("subtract/<int:id>/", views.subtract, name="subtract"),
