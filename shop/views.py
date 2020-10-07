@@ -53,12 +53,15 @@ class Update(DetailView):
     model = Product
     template_name = "shop/update.html"
     
-    def get_context_data(self, **kw):
-        context = super(DetailView, self).get_context_data(**kw)
-        self.object.quantity = F('quantity') + 1
-        self.object.save()
-        self.object.refresh_from_db()
-        return context, self.kw
+    def get_context_data(self, a):
+        #  context = super(DetailView, self).get_context_data(**kw)
+        return a
+    #  def get_context_data(self, **kw):
+    #      context = super(DetailView, self).get_context_data(**kw)
+    #      self.object.quantity = F('quantity') + 1
+    #      self.object.save()
+    #      self.object.refresh_from_db()
+    #      return context, self.kw
 
 
 
