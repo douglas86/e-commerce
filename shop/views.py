@@ -4,7 +4,6 @@ from django.core.paginator import Paginator
 from shop.context_processors import requesting, sect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
 from django.db.models import F
 
 
@@ -28,53 +27,26 @@ class Detail(DetailView):
     template_name = "shop/detail.html"
 
 
-#  add to cart view
-#  def create_items(request, id):
-#      #  looks to see what page you are on
-#      req = request.GET.get("page")
-#
-#      #  grabs item from db by id number
-#      product_objects = Product.objects.get(id=id)
-#
-#      #  adds one to quantity then saves to db
-#      product_objects.quantity += 1
-#      product_objects.save()
-#
-#      requestig = request.get_full_path()
-#
-#      #  makes sure to stay on current page
-#      if req != None:
-#          return redirect("/")
-#      else:
-#          return redirect("/?page={}".format(requesting()))
-
-
-#  class Update(DetailView):
-#      model = Product
-#      template_name = "shop/update.html"
-#
-#      def get_context_data(self, a):
-#          #  context = super(DetailView, self).get_context_data(**kw)
-#          return a
-#      #  def get_context_data(self, **kw):
-#      #      context = super(DetailView, self).get_context_data(**kw)
-#      #      self.object.quantity = F('quantity') + 1
-#      #      self.object.save()
-#      #      self.object.refresh_from_db()
-#      #      return context, self.kw
-
-class Update(UpdateView):
+#  updates quantity in database
+class Update(DetailView):
     model = Product
     template_name = "shop/update.html"
-    fields = ['title', 'quantity']
 
-    def get_context_data(self, **kw):
-        context = super().get_context_data(**kw)
-        path = self.request.path
-        name = self.kw['name']
-        return name
-
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #  takes the dictionary and draws out second value in dict
+        valued_item = list(self.kwargs.values())[1]
+        #  checks value of valued_item
+        if valued_item == 2:
+            #  subtract 1 from db
+            if self.object.quantity > 0:
+                self.object.quantity = F('quantity') - 1
+        else:
+            #  adds 1 to db
+            self.object.quantity = F('quantity') + self.kwargs['number']
+        #  save to db
+        self.object.save()
+        return context
 
 
 def subtract(request, id):
