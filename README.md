@@ -2,6 +2,6 @@ Problems:
 
 changing all views from function based to class based views
 
-playing around with passing a varaible to update view
-if that variable is add it pluses one the quantity
-if that variable is subtract it minuses one from quantity
+Got the update view to work
+the next step is to do a success_url
+the url must redirect to the previous page
