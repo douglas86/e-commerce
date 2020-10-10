@@ -88,7 +88,7 @@
 		  <div class="card-text">R {{ product.price | floatformat:2 }}</div>
 		  <a href="{{ product.id }}" class="btn btn-warning">View</a>
 		  {% comment %} pass in 1 for add 2 for minus {% endcomment %}
-		  <a href="{% url 'update' product.pk 2 %}">
+		  <a href="{% url 'update' product.pk 2 %}?next={{ request.get_full_path }}">
 			<button type="submit" class="btn btn-warning">add to cart</button>
 		  </a>
 		</div>

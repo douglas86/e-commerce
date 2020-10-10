@@ -5,6 +5,7 @@ from shop.context_processors import requesting, sect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import F
+from django.urls import reverse_lazy
 
 
 class Index(ListView):
@@ -36,6 +37,7 @@ class Update(DetailView):
         context = super().get_context_data(**kwargs)
         #  takes the dictionary and draws out second value in dict
         valued_item = list(self.kwargs.values())[1]
+        #  URL_path = list(self.kwargs.values())[2]
         #  checks value of valued_item
         if valued_item == 2:
             #  subtract 1 from db
@@ -46,7 +48,27 @@ class Update(DetailView):
             self.object.quantity = F('quantity') + self.kwargs['number']
         #  save to db
         self.object.save()
+        #  print(self.kwargs['next'])
+        context['next'] = self.request.GET.get('request.get_full_path', None)
+        print(context)
         return context
+
+    def get_seccess_url(self):
+        path = request.GET.get('next', None)
+        print(request.GET.get('param1', None))
+        return redirect(path)
+
+    #  def get_success_url(self):
+    #      URL_path = self.kwargs['next']
+    #      print(URL_path)
+    #      print(request.GET.get('next'))
+    #      return redirect(request.GET.get('next'))
+
+
+
+    #  def dispatch(self):
+    #      return redirect(URL_path)
+
 
 
 def subtract(request, id):
