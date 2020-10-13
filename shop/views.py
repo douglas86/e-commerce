@@ -5,6 +5,7 @@ from shop.context_processors import requesting, sect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import F
+from django.http import HttpResponse
 
 
 class Index(ListView):
@@ -28,32 +29,64 @@ class Detail(DetailView):
 
 
 #  updates quantity in database
+#  class Update(DetailView):
+#      model = Product
+#      template_name = "shop/update.html"
+#
+#
+#
+#      def get_context_data(self, **kwargs):
+#          context = super(Update, self).get_context_data(**kwargs)
+#          #  takes the dictionary and draws out second value in dict
+#          valued_item = list(self.kwargs.values())[1]
+#          #  URL_path = list(self.kwargs.values())[2]
+#          #  checks value of valued_item
+#          if valued_item == 2:
+#              #  subtract 1 from db
+#              if self.object.quantity > 0:
+#                  self.object.quantity = F('quantity') - 1
+#          else:
+#              #  adds 1 to db
+#              self.object.quantity = F('quantity') + self.kwargs['number']
+#          #  save to db
+#          self.object.save()
+#          #  print(self.kwargs['next'])
+#          #  context['next'] = self.request.GET.get('request.get_full_path', None)
+#          print(context)
+#          print(self.kwargs)
+#          return context
+
 class Update(DetailView):
     model = Product
-    template_name = "shop/update.html"
+    template_name = 'shop/update.html'
 
+    #  def dispatch(self, request, *args, **kwargs):
+    #      next_parameter = request.GET['next']
+    #      print(next_parameter)
+    #      pk_parameter = request.GET['pk']
+    #      print(pk_parameter)
+    #      print(self.kwargs)
+    #      return HttpResponse(next_parameter)
+    def get_context_data(self, request, *args, **kwargs):
+        next_parameter = request.GET['next']
+        return HttpResponse(next_parameter)
 
+    #  def get_object(self):
+    #      obj = super().get_object()
+    #      o = request.get_full_path()
+    #      print(obj)
+    #      print(o)
+    #      return obj
+    #  def get_context_data(self, **kwargs):
+    #      context = super().get_context_data(**kwargs)
+    #      print(context)
+    #      print(self.kwargs)
+    #      return context
 
-    def get_context_data(self, **kwargs):
-        context = super(Update, self).get_context_data(**kwargs)
-        #  takes the dictionary and draws out second value in dict
-        valued_item = list(self.kwargs.values())[1]
-        #  URL_path = list(self.kwargs.values())[2]
-        #  checks value of valued_item
-        if valued_item == 2:
-            #  subtract 1 from db
-            if self.object.quantity > 0:
-                self.object.quantity = F('quantity') - 1
-        else:
-            #  adds 1 to db
-            self.object.quantity = F('quantity') + self.kwargs['number']
-        #  save to db
-        self.object.save()
-        #  print(self.kwargs['next'])
-        #  context['next'] = self.request.GET.get('request.get_full_path', None)
-        print(context)
-        print(self.kwargs)
-        return context
+#  def viewname(request):
+#      price_lte =request.GET['price_lte']
+#      print(price_lte)
+#      return HttpResponse(price_lte)
 
 
     #  def get_seccess_url(self, resources):

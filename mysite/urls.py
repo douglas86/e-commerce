@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from django.conf.urls import url
 from shop import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.Index.as_view(), name="index"),
-    path("update/<pk>/<int:number>", views.Update.as_view(), name="update"),
+    #  path("update/<pk>/<int:number>", views.Update.as_view(), name="update"),
+    #  url(r'^update/(?P<pk>\d+)/(?P<number>\d+)/$', views.Update.as_view(), name="update"),
+    url(r'^update/$', views.Update.as_view(), name="update"),
+    #  url(r'^products/$', views.viewname, name='urlname'),
     path("<pk>/", views.Detail.as_view(), name="detail"),
     path("checkout/", views.checkout, name='checkout'),
 ]

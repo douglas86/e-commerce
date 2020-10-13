@@ -7,3 +7,6 @@ when you click add to cart button
 i got it right to add that as a parameter called next
 the next step would be to gab that parameter and use it
 to redirect in update view
+
+Got it right to grab the parameter name
+now i need to find a way to store to db using dispatch method
